@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PayRam — Features Section Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;0,800;0,900;1,800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0a0d1c;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* ── Fake hero strip so the section sits in context ── */
+    .hero-stub {
+      background: #caff54;
+      padding: 40px;
+      text-align: center;
+    }
+    .hero-stub p {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #0a0d1c;
+      opacity: 0.4;
+    }
+
+    /* ── Features section ── */
+    .features {
+      background: #141830;
+      padding: 80px 40px;
+    }
+
+    .features__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .features__label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #caff54;
+      border: 1px solid rgba(202, 255, 84, 0.25);
+      border-radius: 4px;
+      padding: 4px 10px;
+      margin-bottom: 20px;
+    }
+
+    .features__heading {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(32px, 4vw, 54px);
+      font-weight: 800;
+      line-height: 1.05;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      margin-bottom: 64px;
+    }
+
+    .features__heading em {
+      color: #caff54;
+      font-style: italic;
+    }
+
+    .features__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+      border-left: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .feature-card {
+      border-right: 1px solid rgba(255, 255, 255, 0.07);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      padding: 40px 36px;
+      transition: background 0.2s ease, border-color 0.2s ease;
+      cursor: pointer;
+    }
+
+    .feature-card:hover {
+      background: rgba(202, 255, 84, 0.04);
+      border-color: rgba(202, 255, 84, 0.22);
+    }
+
+    .feature-card:hover .feature-card__title {
+      color: #caff54;
+    }
+
+    .feature-card__num {
+      display: block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.22);
+      margin-bottom: 20px;
+    }
+
+    .feature-card__title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #fff;
+      margin-bottom: 12px;
+      transition: color 0.2s;
+    }
+
+    .feature-card__desc {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.42);
+      line-height: 1.75;
+    }
+
+    /* ── Fake merchant section stub below ── */
+    .merchant-stub {
+      background: #6c3fc5;
+      padding: 40px;
+      text-align: center;
+    }
+    .merchant-stub p {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #fff;
+      opacity: 0.4;
+    }
+
+    .feature-card__link {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .feature-card:hover .feature-card__link {
+      color: #caff54;
+    }
+
+    /* ── Pills ── */
+    .features__pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-start;
+      margin-bottom: 32px;
+    }
+
+    .features__pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.04);
+      letter-spacing: 0.01em;
+    }
+
+    /* ── Featured In ── */
+    .featured-in {
+      background: #141830;
+      padding: 40px 40px 56px;
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .featured-in__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .featured-in__label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.28);
+      margin-bottom: 28px;
+    }
+
+    .featured-in__logos {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+      gap: 24px 32px;
+    }
+
+    .featured-in__logo-link {
+      display: inline-flex;
+      align-items: center;
+      transition: opacity 0.2s ease;
+    }
+
+    .featured-in__logo-link:hover {
+      opacity: 1;
+    }
+
+    .featured-in__logo {
+      height: 30px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      opacity: 0.75;
+      transition: filter 0.2s ease, opacity 0.2s ease;
+    }
+
+    .featured-in__logo-link:hover .featured-in__logo {
+      filter: none;
+      opacity: 1;
+    }
+
+    .featured-in__logo-text {
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      color: rgba(255, 255, 255, 0.75);
+      filter: grayscale(100%);
+      transition: color 0.25s ease, filter 0.25s ease;
+    }
+
+    .featured-in__logo-link--text:hover .featured-in__logo-text {
+      color: #fff;
+      filter: none;
+    }
+
+    @media (max-width: 768px) {
+      .features__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Context: hero stub -->
+  <div class="hero-stub">
+    <p>↑ Hero section (lime green) sits above this</p>
+  </div>
+
+  <!-- Features section -->
+  <section class="features">
+    <div class="features__inner">
+
+      <span class="features__label">Why PayRam</span>
+
+      <h2 class="features__heading">
+        Everything you need to<br>
+        <em>accept payments.</em>
+      </h2>
+
+      <div class="features__pills">
+        <span class="features__pill">🔒 Self-Hosted Infrastructure</span>
+        <span class="features__pill">⚡ Live in Under 10 Minutes</span>
+        <span class="features__pill">🤖 MCP-Native AI Agents</span>
+      </div>
+
+      <div class="features__grid">
+
+        <div class="feature-card">
+          <span class="feature-card__num">01</span>
+          <h3 class="feature-card__title"><a href="https://www.payram.com/operator?utm_source=website&utm_medium=features_grid&utm_campaign=why_payram&utm_content=operator_mode" target="_blank" rel="noopener noreferrer" class="feature-card__link">💼 Operator Mode</a></h3>
+          <p class="feature-card__desc">Deploy one PayRam instance. Onboard merchants with their own wallets, API keys, and webhooks.</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-card__num">02</span>
+          <h3 class="feature-card__title"><a href="https://docs.payram.com/features/payment-links?utm_source=website&utm_medium=features_grid&utm_campaign=why_payram&utm_content=payment_links_apis" target="_blank" rel="noopener noreferrer" class="feature-card__link">💸 Payment Links & APIs</a></h3>
+          <p class="feature-card__desc">Create shareable payment links or integrate via API. Close sales in chats, DMs, or emails with one-click checkout.</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-card__num">03</span>
+          <h3 class="feature-card__title"><a href="https://docs.payram.com/features/customer-deposit-wallets?utm_source=website&utm_medium=features_grid&utm_campaign=why_payram&utm_content=customer_deposit_wallets" target="_blank" rel="noopener noreferrer" class="feature-card__link">🙋‍♂️ Customer Deposit Wallets</a></h3>
+          <p class="feature-card__desc">Assign a dedicated deposit address to every customer. Track balances, automate reconciliation, and sweep to your cold wallet.</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-card__num">04</span>
+          <h3 class="feature-card__title"><a href="https://docs.payram.com/features/smartsweep?utm_source=website&utm_medium=features_grid&utm_campaign=why_payram&utm_content=smartsweep" target="_blank" rel="noopener noreferrer" class="feature-card__link">🔀 SmartSweep</a></h3>
+          <p class="feature-card__desc">Funds sweep automatically from deposit wallets to your cold wallet via smart contracts. No manual consolidation, no exposed keys.</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-card__num">05</span>
+          <h3 class="feature-card__title"><a href="https://docs.payram.com/features/payouts?utm_source=website&utm_medium=features_grid&utm_campaign=why_payram&utm_content=payouts" target="_blank" rel="noopener noreferrer" class="feature-card__link">💰 Payouts</a></h3>
+          <p class="feature-card__desc">Send crypto payouts to any wallet on any supported chain. Handle refunds, payroll, and supplier payments from one dashboard.</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-card__num">06</span>
+          <h3 class="feature-card__title"><a href="https://docs.payram.com/features/card-to-crypto-fiat-onramp?utm_source=website&utm_medium=features_grid&utm_campaign=why_payram&utm_content=card_to_crypto" target="_blank" rel="noopener noreferrer" class="feature-card__link">💳 Card-to-Crypto</a></h3>
+          <p class="feature-card__desc">Accept card, Apple Pay, Google Pay, and bank transfers. Customers pay in fiat, you settle in crypto across 190+ countries.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured In section -->
+  <section class="featured-in">
+    <div class="featured-in__inner">
+      <p class="featured-in__label">Featured In</p>
+      <div class="featured-in__logos">
+
+        <a href="https://apnews.com/press-release/access-newswire/payram-enables-agents-to-go-live-with-a-self-hosted-stablecoin-payment-gateway-in-minutes-no-humans-involved-c04e818ca4a82ccac63900c1407464b0" target="_blank" rel="noopener noreferrer" class="featured-in__logo-link">
+          <img src="http://localhost:4206/assets/ap-logo.png" alt="AP News" class="featured-in__logo" />
+        </a>
+
+        <a href="https://cointelegraph.com/press-releases/payram-pioneers-permissionless-commerce-with-private-stablecoin-payments" target="_blank" rel="noopener noreferrer" class="featured-in__logo-link">
+          <img src="http://localhost:4206/assets/cointelegraph-logo.png" alt="CoinTelegraph" class="featured-in__logo" />
+        </a>
+
+        <a href="https://techbullion.com/top-10-crypto-payment-gateways-2026-the-definitive-guide/" target="_blank" rel="noopener noreferrer" class="featured-in__logo-link">
+          <img src="http://localhost:4206/assets/techbullion-logo.webp" alt="TechBullion" class="featured-in__logo" />
+        </a>
+
+        <a href="https://www.analyticsinsight.net/cryptocurrency-analytics-insight/payram-enables-agents-to-go-live-with-a-self-hosted-stablecoin-payment-gateway-in-minutes" target="_blank" rel="noopener noreferrer" class="featured-in__logo-link featured-in__logo-link--text">
+          <span class="featured-in__logo-text">Analytics Insight</span>
+        </a>
+
+        <a href="https://www.thegamblest.com/igaming-talks-interview-with-payrams-siddharth-menon/" target="_blank" rel="noopener noreferrer" class="featured-in__logo-link">
+          <img src="http://localhost:4206/assets/thegamblest-logo.svg" alt="The Gamblest" class="featured-in__logo" />
+        </a>
+
+        <a href="https://www.accessnewswire.com/newsroom/en/blockchain-and-cryptocurrency/payram-enables-agents-to-go-live-with-a-self-hosted-stablecoin-paymen-1144001" target="_blank" rel="noopener noreferrer" class="featured-in__logo-link">
+          <img src="http://localhost:4206/assets/anw-logo.svg" alt="Access Newswire" class="featured-in__logo" />
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Context: merchant dashboard stub -->
+  <div class="merchant-stub">
+    <p>↓ Merchant dashboard section (purple) sits below this</p>
+  </div>
+
+</body>
+</html>
