@@ -239,9 +239,59 @@
       filter: none;
     }
 
+    /* ── CTA buttons ── */
+    .features__cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: 48px 40px;
+      background: #141830;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 26px;
+      border-radius: 7px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      transition: opacity 0.18s ease, background 0.18s ease;
+      white-space: nowrap;
+    }
+
+    .cta-btn--primary {
+      background: #caff54;
+      color: #0a0d1c;
+      border: 1px solid transparent;
+    }
+
+    .cta-btn--primary:hover {
+      opacity: 0.88;
+    }
+
+    .cta-btn--secondary {
+      background: transparent;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+    }
+
+    .cta-btn--secondary:hover {
+      border-color: rgba(255, 255, 255, 0.55);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
     @media (max-width: 768px) {
       .features__grid {
         grid-template-columns: 1fr;
+      }
+
+      .features__cta {
+        flex-direction: column;
       }
     }
   </style>
@@ -311,6 +361,16 @@
       </div>
     </div>
   </section>
+
+  <!-- CTA buttons -->
+  <div class="features__cta">
+    <a href="https://docs.payram.com/deployment-guide/introduction?utm_source=website&utm_medium=cta&utm_campaign=why_payram" target="_blank" rel="noopener noreferrer" class="cta-btn cta-btn--primary">
+      View Docs <span>↗</span>
+    </a>
+    <a href="https://calendly.com/payram-sales/30min" target="_blank" rel="noopener noreferrer" class="cta-btn cta-btn--secondary">
+      Book a Call <span>→</span>
+    </a>
+  </div>
 
   <!-- Featured In section -->
   <section class="featured-in">
